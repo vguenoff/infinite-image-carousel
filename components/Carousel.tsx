@@ -1,4 +1,8 @@
+'use client'
+import { useState } from 'react'
 import Image from 'next/image'
+import { nanoid } from 'nanoid'
+
 import styles from './Carousel.module.css'
 
 export type Picture = {
@@ -16,9 +20,25 @@ type Props = {
 }
 
 export default function Carousel({ data }: Props) {
+  const [carouselData, setCarouselData] = useState(data)
+
   return (
-    <section className={styles.slider}>
-      {data.map(({ id, urls, description, color }, i) => (
+    <section
+      className={styles.slider}
+      onScroll={e => {
+        const target = e.target as HTMLElement
+
+        if (
+          (carouselData.length - 1) * target.clientWidth ===
+          target.scrollLeft
+        ) {
+          setCarouselData(carouselData =>
+            carouselData.concat(data.map(item => ({ ...item, id: nanoid() }))),
+          )
+        }
+      }}
+    >
+      {carouselData.map(({ id, urls, description, color }, i) => (
         <div
           className={styles.frame}
           style={{ backgroundColor: color }}
