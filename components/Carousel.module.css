@@ -1,9 +1,10 @@
 .slider {
   display: flex;
   height: 50vh;
+  margin: 10px;
+  border-radius: 10px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
-  border-radius: 10px;
   /* -webkit-overflow-scrolling: touch; */
 }
 
