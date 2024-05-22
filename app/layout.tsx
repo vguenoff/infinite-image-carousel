@@ -5,8 +5,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Infinite Carousel',
-  description: 'Task for Betty Tech',
+  title: 'Boston Public Library',
+  description:
+    'Considered a pioneer of public library service in the United States, the Boston Public Library is among the three largest collections in the country and is committed to be ‘Free for All’.',
 }
 
 export default function RootLayout({
