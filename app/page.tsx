@@ -1,18 +1,18 @@
-// import Carousel from '@/components/Carousel'
-// import type { Picture } from '@/components/Carousel'
+import Carousel from '@/components/Carousel'
+import type { Picture } from '@/components/Carousel'
 
-// async function getData() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/content`)
+async function getData() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/content`)
 
-//   if (!res.ok) {
-//     throw new Error('Failed to fetch data')
-//   }
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
 
-//   return res.json()
-// }
+  return res.json()
+}
 
 export default async function Home() {
-  // const data: Picture[] = await getData()
+  const data: Picture[] = await getData()
 
   return (
     <main>
@@ -24,7 +24,7 @@ export default async function Home() {
           the country and is committed to be ‘Free for All’.
         </strong>
       </p>
-      {/* <Carousel {...{ data }} /> */}
+      <Carousel {...{ data }} />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Sed ut perspiciatis
