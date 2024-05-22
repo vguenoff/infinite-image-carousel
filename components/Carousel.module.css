@@ -1,0 +1,18 @@
+.slider {
+  display: flex;
+  height: 50vh;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  border-radius: 10px;
+  /* -webkit-overflow-scrolling: touch; */
+}
+
+.frame {
+  position: relative;
+  min-width: 100%;
+  scroll-snap-align: start;
+
+  & img {
+    object-fit: contain;
+  }
+}
