@@ -28,13 +28,14 @@ main {
   flex-direction: column;
   max-width: var(--max-width);
 
-  h1 {
-    color: tomato;
-  }
-
   h1,
   p {
     padding: 10px;
+  }
+
+  h1 {
+    color: tomato;
+    padding-bottom: 0;
   }
 }
 
