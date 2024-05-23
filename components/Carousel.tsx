@@ -31,9 +31,10 @@ export default function Carousel({ data }: Props) {
         frame.current = Math.round(scrollLeft / clientWidth)
 
         if (frame.current + 1 >= carouselData.length) {
-          setCarouselData(carouselData =>
-            carouselData.concat(data.map(item => ({ ...item, id: nanoid() }))),
-          )
+          setCarouselData([
+            ...carouselData,
+            ...data.map(item => ({ ...item, id: nanoid() })),
+          ])
         }
       }}
     >
