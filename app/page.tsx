@@ -1,5 +1,15 @@
 import Carousel from '@/components/Carousel'
-import type { Picture } from '@/components/Carousel'
+import Carousel2 from '@/components/Carousel2'
+
+export type Picture = {
+  id: string
+  color: string
+  description: string
+  urls: {
+    regular: string
+    thumb: string
+  }
+}
 
 async function getData() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/content`)
@@ -25,6 +35,7 @@ export default async function Home() {
         </strong>
       </p>
       <Carousel {...{ data }} />
+      <Carousel2 {...{ data }} />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Sed ut perspiciatis

@@ -1,4 +1,9 @@
-.slider {
+.wrapper {
+  position: relative;
+}
+
+.slider,
+.ghostSlider {
   display: flex;
   height: 50vh;
   margin: 10px;
@@ -13,10 +18,19 @@
   scrollbar-width: none; /* Firefox */
 }
 
+.ghostSlider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 20px);
+  opacity: 0;
+}
+
 .frame {
   position: relative;
   min-width: 100%;
   scroll-snap-align: start;
+  height: 100%;
 
   & img {
     object-fit: contain;

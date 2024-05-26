@@ -5,38 +5,28 @@ import { nanoid } from 'nanoid'
 
 import styles from './Carousel.module.css'
 
-export type Picture = {
-  id: string
-  color: string
-  description: string
-  urls: {
-    regular: string
-    thumb: string
-  }
-}
+import type { Picture } from '@/app/page'
 
-type Props = {
-  data: Picture[]
-}
-
-export default function Carousel({ data }: Props) {
+export default function Carousel({ data }: { data: Picture[] }) {
   const [carouselData, setCarouselData] = useState(data)
   const frame = useRef(0)
+
+  const onScrollHandler = (target: HTMLElement) => {
+    const { scrollLeft, clientWidth } = target
+    frame.current = Math.round(scrollLeft / clientWidth)
+
+    if (frame.current + 1 >= carouselData.length) {
+      setCarouselData([
+        ...carouselData,
+        ...data.map(item => ({ ...item, id: nanoid() })),
+      ])
+    }
+  }
 
   return (
     <section
       className={styles.slider}
-      onScroll={e => {
-        const { scrollLeft, clientWidth } = e.target as HTMLElement
-        frame.current = Math.round(scrollLeft / clientWidth)
-
-        if (frame.current + 1 >= carouselData.length) {
-          setCarouselData([
-            ...carouselData,
-            ...data.map(item => ({ ...item, id: nanoid() })),
-          ])
-        }
-      }}
+      onScroll={e => onScrollHandler(e.target as HTMLElement)}
     >
       {carouselData.map(({ id, urls, description, color }, i) => (
         <div
